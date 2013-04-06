@@ -1,0 +1,6 @@
+# Set Users path
+export PATH=$PATH:/bin:<%= scope.lookupvar('storm::params::java_home') %>/bin:<%= scope.lookupvar('storm::params::storm_base') %>/storm/bin
+
+# Set JAVA_HOME (we will also configure JAVA_HOME directly for Hadoop later on)
+export JAVA_HOME=<%= scope.lookupvar('storm::params::java_home') %>
+

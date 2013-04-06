@@ -1,0 +1,35 @@
+########### These MUST be filled in for a storm configuration
+storm.zookeeper.servers:
+<% server_id = 0 -%>
+<% scope.lookupvar('storm::params::zookeeper_servers').each do |var| -%>
+    - "<%= var %>"
+<% end -%>
+
+storm.local.dir: "<%= scope.lookupvar('storm::params::storm_local_path') %>"
+
+# 
+nimbus.host: "<%= scope.lookupvar('storm::params::nimbus_host') %>"
+
+#
+supervisor.slots.ports:
+    - 6700
+    - 6701
+    - 6702
+    - 6703
+# 
+# 
+# ##### These may optionally be filled in:
+#    
+## List of custom serializations
+# topology.kryo.register:
+#     - org.mycompany.MyType
+#     - org.mycompany.MyType2: org.mycompany.MyType2Serializer
+#
+## List of custom kryo decorators
+# topology.kryo.decorators:
+#     - org.mycompany.MyDecorator
+#
+## Locations of the drpc servers
+# drpc.servers:
+#     - "server1"
+#     - "server2"
